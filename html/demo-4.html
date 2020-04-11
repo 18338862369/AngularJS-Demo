@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angularJS-demo4-控制器</title>
+    <script src="../js/angular.min.js"></script>
+    <script>
+        //建立模块
+        var app = angular.module("myApp",[]);
+        //创建控制器
+        app.controller("myController",function ($scope) {
+
+            //结果
+            $scope.result = 0;
+
+            //计算结果
+            $scope.getResult = function() {
+                $scope.result = parseInt($scope.num1)+ parseInt($scope.num2);
+            }
+        });
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+    第一个数字：<input type="text" ng-model="num1">
+    第二个数字：<input type="text" ng-model="num2">
+    <button ng-click="getResult()">计算</button>
+    结果:{{result}}
+</body>
+</html>

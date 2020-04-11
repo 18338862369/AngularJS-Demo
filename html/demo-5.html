@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo5-循环</title>
+    <script src="../js/angular.min.js"></script>
+    <script>
+        //创建模块
+        var app = angular.module("myApp",[]);
+        //创建控制器
+        app.controller("myController",function ($scope) {
+            //创建数组
+            $scope.list = [1,3,5,7,9];
+        });
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+    <table>
+        //迭代数组
+        <tr ng-repeat="item in list">
+            //展示数据
+            <td>{{item}}</td>
+        </tr>
+    </table>
+</body>
+</html>

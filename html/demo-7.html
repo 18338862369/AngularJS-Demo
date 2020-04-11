@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>$http</title>
+    <script src="../js/angular.min.js"></script>
+    <script>
+        //创建模块
+        var app = angular.module("myApp",[]);
+        //创建控制器
+        app.controller("myController",function ($scope,$http) {
+            //查询
+            $scope.findList = function () {
+                //TODO 此处存在跨域问题 暂未解决
+                $http.post("../json/data.json").success(function (response) {
+                    $scope.list = response;
+                });
+            }
+        });
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="myController" ng-init="findList()">
+    <table>
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>数学成绩</th>
+        </tr>
+        <tr ng-repeat="item in list">
+            <td>{{item.name}}</td>
+            <td>{{item.age}}</td>
+            <td>{{item.math}}</td>
+        </tr>
+    </table>
+</body>
+</html>
